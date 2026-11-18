@@ -182,7 +182,7 @@ function fit(){var w=innerWidth,h=innerHeight,s,ar=w/h;
  s=ar<0.5625?Math.max(w/720,h/1280):Math.min(w/720,h/1280);
  c.style.transform='translate('+((w-720*s)/2)+'px,'+((h-1280*s)/2)+'px) scale('+s+')';}
 fit();addEventListener('resize',fit);
-function dear(){var h='';try{h=decodeURIComponent(location.hash.slice(1))}catch(e){h=location.hash.slice(1)}
+function dear(){var h='',raw=location.hash.slice(1)||location.search.slice(1).replace(/^(n|name)=/i,'').split('&')[0];try{h=decodeURIComponent(raw)}catch(e){h=raw}
  h=h.replace(/[-_+.]+/g,' ').replace(/[^A-Za-z\u00C0-\u024F' ]/g,'').replace(/\s+/g,' ').trim().slice(0,26);
  document.getElementById('dear').textContent=h?'Dear '+h+', ':'';c.classList.toggle('has-dear',!!h);
  var pre=c.querySelector('.pre');pre.style.fontSize='';if(h){var fs=19,rg=document.createRange();rg.selectNodeContents(pre);
